@@ -1,5 +1,6 @@
 package com.common.config;
 
+import com.controller.ActivityController;
 import com.controller.UserController;
 import com.jfinal.config.Constants;
 import com.jfinal.config.Handlers;
@@ -34,7 +35,7 @@ public class MainConfig extends JFinalConfig{
 	@Override
 	public void configRoute(Routes me) {
 		me.add("/user",UserController.class);
-		
+		me.add("/activity",ActivityController.class);
 	}
 
 	@Override

@@ -5,6 +5,7 @@ import com.jfinal.core.Controller;
 import com.jfinal.ext.render.CaptchaRender;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Record;
+import com.util.PasswordCode;
 
 /**
  * @author 钱洋
@@ -27,6 +28,7 @@ public class UserController extends BaseController{
 		//获取传递过来的用户名和密码
 		String phone = getPara("phone");
 		String pwd = getPara("pwd");
+		String ChangePwd = PasswordCode.getMD5(pwd);
 		
 		ReturnResult result = new ReturnResult();
 		
@@ -37,7 +39,7 @@ public class UserController extends BaseController{
 			//保存用户信息
 			record = new Record();
 			record.set("username", phone);
-			record.set("password", pwd);
+			record.set("password", ChangePwd);
 			//record.set("name", phone);
 			Db.save(USER, record);
 			
@@ -55,11 +57,11 @@ public class UserController extends BaseController{
 	public void login(){
 		String username = getPara("phone");
 		String password = getPara("pwd");
-		
+		String ChangePwd = PasswordCode.getMD5(password);
 		ReturnResult result = new ReturnResult();
 		
 		//判断用户名和密码是否匹配
-		Record record = Db.findFirst("select * from user where username = ? and password = ?", username,password);
+		Record record = Db.findFirst("select * from user where username = ? and password = ?", username,ChangePwd);
 		if(record != null){
 			result.setSuccess(true);
 			result.setInfo("登陆成功");
@@ -77,6 +79,10 @@ public class UserController extends BaseController{
 	public void check(){
 		CaptchaRender img = new CaptchaRender(RANDOM_CODE_KEY);  
         render(img);  
+	}
+	
+	public void showUserInfo(){
+		
 	}
 
 }
