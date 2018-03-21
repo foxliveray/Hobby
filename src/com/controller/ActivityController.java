@@ -1,5 +1,6 @@
 package com.controller;
 
+<<<<<<< HEAD
 import java.io.File;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -12,6 +13,12 @@ import com.jfinal.upload.UploadFile;
 import com.util.DateUtil;
 import com.util.FileUtil;
 import com.util.StrUtils;
+=======
+import java.util.List;
+
+import com.jfinal.plugin.activerecord.Db;
+import com.jfinal.plugin.activerecord.Record;
+>>>>>>> dev
 
 /**
  * @author 钱洋
@@ -19,8 +26,11 @@ import com.util.StrUtils;
  */
 public class ActivityController extends BaseController{
 	private static final String ACTIVITY = "activity";
+<<<<<<< HEAD
 	private static final String ROOT_DIRECTORY = "/upload/activity/";
 	private static final String[] IMG_EXTENSIONS={"jpg","png","jpeg","gif","bmp"};
+=======
+>>>>>>> dev
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -29,8 +39,11 @@ public class ActivityController extends BaseController{
 	}
 
 	public void activityInfoList(){
+<<<<<<< HEAD
 		String userid = getPara("userid");
 		System.out.println(userid);
+=======
+>>>>>>> dev
 		ReturnResult result = new ReturnResult();
 		String tag = getPara("tag");
 		if (tag.equals("推荐")){
@@ -46,8 +59,12 @@ public class ActivityController extends BaseController{
 			}
 		}
 		else if (tag.equals("已参加")){
+<<<<<<< HEAD
 			String userId = getPara("userId");
 			List<Record> list = Db.find("select * from activity where id in(select actId from activity_user where userId = ?)",userId);
+=======
+			List<Record> list = Db.find("Select * from activity order by likeNum asc");
+>>>>>>> dev
 			if(record != null){
 				result.setSuccess(true);
 				result.setInfo("成功返回活动信息列表");
@@ -59,7 +76,11 @@ public class ActivityController extends BaseController{
 			}
 		}
 		else if (tag.equals("最新")){
+<<<<<<< HEAD
 			List<Record> list = Db.find("Select * from activity order by startTime desc");
+=======
+			List<Record> list = Db.find("Select * from activity order by peopleNumber asc");
+>>>>>>> dev
 			if(record != null){
 				result.setSuccess(true);
 				result.setInfo("成功返回活动信息列表");
@@ -78,6 +99,7 @@ public class ActivityController extends BaseController{
 		renderJson(result);
 	}
 	
+<<<<<<< HEAD
 	public void createActivity(){
 		String savePath = "";
 		ReturnResult result = new ReturnResult();
@@ -311,4 +333,6 @@ public class ActivityController extends BaseController{
 		renderJson(result);
 	}
 	
+=======
+>>>>>>> dev
 }

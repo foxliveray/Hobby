@@ -1,10 +1,13 @@
 package com.common.config;
 
 import com.controller.ActivityController;
+<<<<<<< HEAD
 import com.controller.CommentController;
 import com.controller.InterestController;
 import com.controller.SearchController;
 import com.controller.TeamController;
+=======
+>>>>>>> dev
 import com.controller.UserController;
 import com.jfinal.config.Constants;
 import com.jfinal.config.Handlers;
@@ -40,10 +43,13 @@ public class MainConfig extends JFinalConfig{
 	public void configRoute(Routes me) {
 		me.add("/user",UserController.class);
 		me.add("/activity",ActivityController.class);
+<<<<<<< HEAD
 		me.add("/interest",InterestController.class);
 		me.add("/team",TeamController.class);
 		me.add("/comment",CommentController.class);
 		me.add("/search",SearchController.class);
+=======
+>>>>>>> dev
 	}
 
 	@Override
